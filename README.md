@@ -43,7 +43,7 @@ La electrónica del proyecto es:
 
 El esquema electrónico quedaría tal que así:
 
-//FOTO
+![Esquema][esquema.jpg]
 
 Donde los transistores irian conectados a la raspberry pi.
 
