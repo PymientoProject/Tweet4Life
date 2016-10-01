@@ -7,7 +7,7 @@ numberOfTweets = [0,0,0,0]
 
 lastTweet = ["", "", "", ""]
 
-twitterObj = TwitterClass.TwitterClass(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+twitterObj = TwitterClass.TwitterClass(TWITTERDATA.CONSUMER_KEY, TWITTERDATA.CONSUMER_SECRET, TWITTERDATA.ACCESS_TOKEN, TWITTERDATA.ACCESS_TOKEN_SECRET)
 obj = SQLClass.SQLClass(DATABASE.DB_HOST, DATABASE.DB_USER, DATABASE.DB_PASS, DATABASE.DB_NAME)
 
 obj.setLastTweet(twitterObj.getLastTweetWithoutRT("#SalvarPrimera"), 1)
