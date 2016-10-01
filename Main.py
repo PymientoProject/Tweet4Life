@@ -5,7 +5,10 @@ import DATABASE
 import TWITTERDATA
 import RPi.GPIO as GPIO
 
-pinGPIO = [21, 20, 16, 26]
+"""This script get the number of tweets from 4 differents hashtags, and the hastag with more tweets associated to a plant receive light. With this script we can kill a plant with tweets.
+The plant with more tweets receive light, and the other, with less tweets, dies"""
+
+pinGPIO = [21, 20, 16, 26]      #The pins of the lights
 
 #Set the pins of the GPIO
 GPIO.setmode(GPIO.BCM)
@@ -36,26 +39,25 @@ while True:
     locatedTweet = False                                        #The Twitter API search all the tweets with the hashtag, we have to know when we need to start to count, so we create a booblean for know this
 
     for tweet in reversed(list(tweets)):                #Read the tweets, we search where are the new tweets and add the number to the DB
-
-        tweetText = tweet.text.encode('ascii', 'xmlcharrefreplace')
+        tweetText = tweet.text.encode('ascii', 'xmlcharrefreplace')     #If we have a tweet in unicode, we have to pass it to ascii, with encode
         print(tweetText)
 
-        if locatedTweet == False:
-            if lastTweet[0] != tweetText:
+        if locatedTweet == False:           #First we have to search the tweet that is in the database as the last one, but now that tweet can or not be the last one
+            if lastTweet[0] != tweetText:   #Check if the tweet in the database is the last one
                 continue
 
                 print("nada")
             else:
                 print("encontrado")
-                locatedTweet = True
+                locatedTweet = True     #The program find the tweet that was in the db, now if there are new tweets the cursor will contue and add new tweets to the database
                 continue
 
-        else:
+        else:       #This execute if we are reading new tweets
             lastTweet[0] = tweetText
             numberOfTweets[0] = numberOfTweets[0] + 1
 
-            obj.insertNumTweets(obj.getNumTweetsWithNum(1) + 1, 1)
-            obj.setLastTweet(tweetText, 1)
+            obj.insertNumTweets(obj.getNumTweetsWithNum(1) + 1, 1)      #Increas the number of tweets in the DB
+            obj.setLastTweet(tweetText, 1)              #Add the new tweet to the DB
             print("sumando")
 
     tweets = twitterObj.getTweetsWithoutRT("#SalvarSegunda")        #The same but with other hashtag
