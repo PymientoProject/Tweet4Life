@@ -35,10 +35,22 @@ lastTweet[2] = obj.getLastTweet(3)
 lastTweet[3] = obj.getLastTweet(4)
 
 while True:
-    tweets = twitterObj.getTweetsWithoutRT("#SalvarPrimera")   #Receive the tweets with the hashtag
+    try:
+        tweets = twitterObj.getTweetsWithoutRT("#SalvarPrimera")   #Receive the tweets with the hashtag
+    except:
+        print("Hubo un error inesperado")
+        time.sleep(10)
+        continue
     locatedTweet = False                                        #The Twitter API search all the tweets with the hashtag, we have to know when we need to start to count, so we create a booblean for know this
 
-    for tweet in reversed(list(tweets)):                #Read the tweets, we search where are the new tweets and add the number to the DB
+    try:
+        tweets = reversed(list(tweets))
+    except:
+        print("Hubo un error inesperado")
+        time.sleep(10)
+        continue
+
+    for tweet in tweets:                #Read the tweets, we search where are the new tweets and add the number to the DB
         tweetText = tweet.text.encode('ascii', 'xmlcharrefreplace')     #If we have a tweet in unicode, we have to pass it to ascii, with encode
         print(tweetText)
 
@@ -60,10 +72,22 @@ while True:
             obj.setLastTweet(tweetText, 1)              #Add the new tweet to the DB
             print("sumando")
 
-    tweets = twitterObj.getTweetsWithoutRT("#SalvarSegunda")        #The same but with other hashtag
+    try:
+        tweets = twitterObj.getTweetsWithoutRT("#SalvarSegunda")        #The same but with other hashtag
+    except:
+        print("Hubo un error inesperado")
+        time.sleep(10)
+        continue
     locatedTweet = False
 
-    for tweet in reversed(list(tweets)):
+    try:
+        tweets = reversed(list(tweets))
+    except:
+        print("Hubo un error inesperado")
+        time.sleep(10)
+        continue
+
+    for tweet in tweets:  # Read the tweets, we search where are the new tweets and add the number to the DB
         tweetText = tweet.text.encode('ascii', 'xmlcharrefreplace')
         print(tweetText)
 
@@ -85,10 +109,22 @@ while True:
             obj.setLastTweet(tweetText, 2)
             print("sumando")
 
-    tweets = twitterObj.getTweetsWithoutRT("#SalvarTercera")
+    try:
+        tweets = twitterObj.getTweetsWithoutRT("#SalvarTercera")
+    except:
+        print("Hubo un error inesperado")
+        time.sleep(10)
+        continue
     locatedTweet = False
 
-    for tweet in reversed(list(tweets)):
+    try:
+        tweets = reversed(list(tweets))
+    except:
+        print("Hubo un error inesperado")
+        time.sleep(10)
+        continue
+
+    for tweet in tweets:  # Read the tweets, we search where are the new tweets and add the number to the DB
         tweetText = tweet.text.encode('ascii', 'xmlcharrefreplace')
         print(tweetText)
 
@@ -110,10 +146,22 @@ while True:
             obj.setLastTweet(tweetText, 3)
             print("sumando")
 
-    tweets = twitterObj.getTweetsWithoutRT("#SalvarCuarta")
+    try:
+        tweets = twitterObj.getTweetsWithoutRT("#SalvarCuarta")
+    except:
+        print("Hubo un error inesperado")
+        time.sleep(10)
+        continue
     locatedTweet = False
 
-    for tweet in reversed(list(tweets)):
+    try:
+        tweets = reversed(list(tweets))
+    except:
+        print("Hubo un error inesperado")
+        time.sleep(10)
+        continue
+
+    for tweet in tweets:  # Read the tweets, we search where are the new tweets and add the number to the DB
         tweetText = tweet.text.encode('ascii', 'xmlcharrefreplace')
         print(tweetText)
 
