@@ -3,11 +3,6 @@ import time
 import SQLClass
 import DATABASE
 import RPi.GPIO as GPIO
-consumer_key = ""               #GO TO TWITTER TO FIND THIS INFO
-consumer_secret = ""
-access_token = ""
-access_token_secret = ""
-
 
 pinGPIO = [21, 20, 16, 26]
 
@@ -22,7 +17,7 @@ numberOfTweets = [0,0,0,0]      #A array with the number of tweets of the plants
 
 lastTweet = ["", "", "", ""]    #The last readed tweet of the plants, is for count the tweets
 
-twitterObj = TwitterClass.TwitterClass(consumer_key, consumer_secret, access_token, access_token_secret)        #Ther twitter object of th etwitter class
+twitterObj = TwitterClass.TwitterClass(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)        #Ther twitter object of th etwitter class
 obj = SQLClass.SQLClass(DATABASE.DB_HOST, DATABASE.DB_USER, DATABASE.DB_PASS, DATABASE.DB_NAME)             #Object of the SQL Custom Class
 
 numberOfTweets[0] = obj.getNumTweetsWithNum(1)      #When you start the script the program read the number of tweets of each plant

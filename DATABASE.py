@@ -1,6 +1,6 @@
-DB_HOST = 'localhost'
-DB_USER = 'root'
-DB_PASS = 'mysqlroot'
-DB_NAME = 'TwitterDB'
+DB_HOST = ''
+DB_USER = ''
+DB_PASS = ''
+DB_NAME = ''
 
 

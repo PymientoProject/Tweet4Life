@@ -1,17 +1,13 @@
 import TwitterClass
 import SQLClass
 import DATABASE
-
-consumer_key = "RqMxLrOKUXRCQ2v1hkjjcrz0E"               #GO TO TWITTER TO FIND THIS INFO
-consumer_secret = "pK3KxtqYZz82sVrpa2NFXQlRXN5vTkh82SZEgwZItVkbiy1iS6"
-access_token = "757628469484331008-uVRkfHjzXTzly34eKHvNWmZTYI7CVKA"
-access_token_secret = "vGpwcFqeBEBpL1fvsgKhYDMqc1ebDXL2X9tsFpSGKqgV8"
+import TWITTERDATA
 
 numberOfTweets = [0,0,0,0]
 
 lastTweet = ["", "", "", ""]
 
-twitterObj = TwitterClass.TwitterClass(consumer_key, consumer_secret, access_token, access_token_secret)
+twitterObj = TwitterClass.TwitterClass(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 obj = SQLClass.SQLClass(DATABASE.DB_HOST, DATABASE.DB_USER, DATABASE.DB_PASS, DATABASE.DB_NAME)
 
 obj.setLastTweet(twitterObj.getLastTweetWithoutRT("#SalvarPrimera"), 1)

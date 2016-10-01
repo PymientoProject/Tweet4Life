@@ -3,7 +3,7 @@ README
 Primero de todo, antes de hacer fucionar el proyecto hay que crear la base de datos y todo el percal:
 
 pi@raspberrypi:~ $ mysql -h localhost -u root -p
-Enter password: mysqlroot
+Enter password: 
 
 create database TwitterDB;
 use TwitterDB
